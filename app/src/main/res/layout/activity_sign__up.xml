@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_login"
+    tools:context=".Sign_Up">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_left_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="24dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_right_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="24dp" />
+
+
+    <ImageView
+        android:id="@+id/user"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="100dp"
+        android:contentDescription="logo"
+        android:src="@drawable/theuser"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right_2"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left_2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/Semail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/et_bg"
+        android:hint="@string/email_address"
+        android:inputType="textEmailAddress"
+        android:padding="16dp"
+        android:textColorHint="@color/login_form_details"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right_2"
+        app:layout_constraintStart_toStartOf="@id/guideline_left_2"
+        app:layout_constraintTop_toBottomOf="@+id/user" />
+    <EditText
+        android:id="@+id/Susername"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/et_bg"
+        android:hint="@string/usern"
+        android:padding="16dp"
+        android:textColorHint="@color/login_form_details"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right_2"
+        app:layout_constraintStart_toStartOf="@id/guideline_left_2"
+        app:layout_constraintTop_toBottomOf="@+id/Semail" />
+
+    <EditText
+        android:id="@+id/passwordS"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/et_bg"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:padding="16dp"
+        android:textColorHint="@color/login_form_details"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right_2"
+        app:layout_constraintStart_toStartOf="@id/guideline_left_2"
+        app:layout_constraintTop_toBottomOf="@+id/Susername" />
+
+    <Button
+        android:id="@+id/btn_singup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/btn_bg"
+        android:text="@string/sign_up_button"
+        android:textAllCaps="false"
+        android:textColor="@color/login_form_details_medium"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right_2"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left_2"
+        app:layout_constraintTop_toBottomOf="@id/passwordS" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

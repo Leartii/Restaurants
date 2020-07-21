@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Restaurants</string>
+    <string name="number_of_seats">Number Of Seats</string>
+    <string name="distance">Distance</string>
+    <string name="showMe">Show Me</string>
+    <string name="email_address">E-mail address</string>
+    <string name="password">Password</string>
+    <string name="login_now">Log In</string>
+    <string name="dont_have_account">Haven\'t signed up yet,</string>
+    <string name="click_here">click here</string>
+    <string name="sign_up_button">Sign Up</string>
+    <string name="usern">Username</string>
+    <string name="more_info">We need some more information to set up your account</string>
+    <string name="contin">Continue</string>
+    <string name="pick_loc_str">Pick your Location</string>
+    <string name="button_details">Submit</string>
+    <string name="res_item_name">Item Name</string>
+    <string name="price">Price</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="menu_button">Add item</string>
+    <string name="name_it">Name of the item</string>
+    <string name="price_item">Price</string>
+    <string name="change_dets">Change Details</string>
+    <string name="change_l">Change Location</string>
+    <string name="change_menu">Menu</string>
+    <string name="log_out">Log out</string>
+    <string name="dets_chan">Details</string>
+    <string name="num_tab">Number of free Tables</string>
+    <string name="commit_str">Commit</string>
+    <string name="title_activity_show_me">Map</string>
+</resources>
