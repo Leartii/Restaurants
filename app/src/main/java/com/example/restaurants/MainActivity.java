@@ -33,6 +33,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
     private LocationManager locationManager;
     private DatabaseReference dbref;
     private Context context;
+    private FirebaseAuth mAuthListener;
 
 
     @Override
@@ -101,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
                                 res.setName(data.child("name").getValue().toString());
                                 res.setLatitude(loc.getLatitude());
                                 res.setLongitude(loc.getLongitude());
+                                res.setId(data.getKey());
 
                                 restaurantsList.add(res);
                             }
@@ -179,6 +182,15 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /*
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(mAuthListener.getCurrentUser() != null){
+            startActivity(new Intent(MainActivity.this, Home.class));
+            finish();
+        }
 
-
+    }
+    */
 }

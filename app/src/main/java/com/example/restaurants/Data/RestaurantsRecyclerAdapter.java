@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.restaurants.Model.Restaurants;
 import com.example.restaurants.R;
+import com.example.restaurants.Res_Dets;
+import com.example.restaurants.RestaurantDetails;
 import com.example.restaurants.Show_me;
 import com.squareup.picasso.Picasso;
 
@@ -68,6 +70,17 @@ public class RestaurantsRecyclerAdapter extends RecyclerView.Adapter<Restaurants
             showmeRes = (Button) itemView.findViewById(R.id.showme);
 
             showmeRes.setOnClickListener(this);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Restaurants res = restaurantsList.get(getAdapterPosition());
+                    String id = res.getId();
+                    Intent intent = new Intent(context, RestaurantDetails.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.putExtra("ID", id);
+                    context.startActivity(intent);
+                }
+            });
         }
 
         @Override

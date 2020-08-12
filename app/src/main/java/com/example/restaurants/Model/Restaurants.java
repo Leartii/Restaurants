@@ -1,17 +1,18 @@
 package com.example.restaurants.Model;
 
 public class Restaurants {
-    private String name, imageLink, freeseats, distance;
+    private String name, imageLink, freeseats, distance, id;
     private Double latitude, longitude;
 
     public Restaurants() {
     }
 
-    public Restaurants(String name, String imageLink, String freeseats, String distance, Double latitude, Double longitude) {
+    public Restaurants(String name, String imageLink, String freeseats, String distance, String id, Double latitude, Double longitude) {
         this.name = name;
         this.imageLink = imageLink;
         this.freeseats = freeseats;
         this.distance = distance;
+        this.id = id;
         this.latitude = latitude;
         this.longitude = longitude;
     }
@@ -62,5 +63,13 @@ public class Restaurants {
 
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

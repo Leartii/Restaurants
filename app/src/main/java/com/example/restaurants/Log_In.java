@@ -93,4 +93,9 @@ public class Log_In extends AppCompatActivity {
         lButton = (Button) findViewById(R.id.btn_login);
         signup = (TextView) findViewById(R.id.sign_uptext);
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
 }

@@ -71,9 +71,10 @@ public class Show_me extends FragmentActivity implements OnMapReadyCallback, Goo
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                mMap.addMarker(new MarkerOptions().position(new LatLng(location.getLatitude(), location.getLongitude())).title("Your Location"));
-                mMap.addMarker(new MarkerOptions().position(latLng).title("Destination"));
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(location.getLatitude(), location.getLongitude())));
+                mMap.clear();
+                //mMap.addMarker(new MarkerOptions().position(new LatLng(location.getLatitude(), location.getLongitude())).title("Your Location"));
+                //mMap.addMarker(new MarkerOptions().position(latLng).title("Destination"));
+                //mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(location.getLatitude(), location.getLongitude())));
 
                 start = new LatLng(location.getLatitude(),location.getLongitude());
                 end = latLng;
@@ -103,7 +104,7 @@ public class Show_me extends FragmentActivity implements OnMapReadyCallback, Goo
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
             return;
         } else {
-            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 3000, 20, locationListener);
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
         }
 
 
@@ -113,7 +114,7 @@ public class Show_me extends FragmentActivity implements OnMapReadyCallback, Goo
 
         if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
-                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 6000, 0, locationListener);
+                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
         }
         else {
             Toast.makeText(getApplicationContext(), "We can't show you your location without your premission", Toast.LENGTH_LONG).show();
@@ -152,7 +153,7 @@ public class Show_me extends FragmentActivity implements OnMapReadyCallback, Goo
                     .withListener(this)
                     .alternativeRoutes(true)
                     .waypoints(Start, End)
-                    .key("AIzaSyCJls369Wq_mRO2yC4VvL4zj8FNTQ0c6Hw")  //also define your api key here.
+                    .key("AIzaSyDZX-BhVvZQ7Sv3cvehgfFFfTSzcLoGNW0")  //also define your api key here.
                     .build();
             routing.execute();
         }
