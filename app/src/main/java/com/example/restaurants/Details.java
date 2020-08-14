@@ -3,6 +3,7 @@ package com.example.restaurants;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.restaurants.R;
@@ -33,6 +35,7 @@ public class Details extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference dbref;
     private String key;
+    private int Hour,Minute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +52,29 @@ public class Details extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        Eopen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(Details.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        Eopen.setText(hourOfDay+":"+minute);
+                    }
+                }, Hour, Minute, true);
+            }
+        });
 
+        Eclose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(Details.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                            Eclose.setText(hourOfDay+":"+minute);
+                    }
+                }, Hour, Minute, true);
+            }
+        });
         setupUI();
         mAuth = FirebaseAuth.getInstance();
         dbref = FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("Details");

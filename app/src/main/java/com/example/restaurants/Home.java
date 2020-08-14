@@ -29,7 +29,7 @@ public class Home extends AppCompatActivity {
     private Button commit;
     private FirebaseAuth mAuth;
     private DatabaseReference dbref;
-    private int max;
+    private int max, current;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +38,19 @@ public class Home extends AppCompatActivity {
         setupUI();
         mAuth = FirebaseAuth.getInstance();
         dbref = FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid());
+
+        dbref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                current = Integer.parseInt(dataSnapshot.child("free_tables").getValue().toString());
+                numTabs.setText(current);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         dbref.child("Details").addValueEventListener(new ValueEventListener() {
             @Override
@@ -54,6 +67,8 @@ public class Home extends AppCompatActivity {
 
             }
         });
+
+
 
         inc.setOnClickListener(new View.OnClickListener() {
             @Override

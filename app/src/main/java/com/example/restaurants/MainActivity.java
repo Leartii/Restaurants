@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                             loc.setLatitude(Double.valueOf(data.child("Location").child("Latitude").getValue().toString()));
                             if(location.distanceTo(loc) < 1000){
                                 Restaurants res = new Restaurants();
-                                res.setDistance(String.valueOf(location.distanceTo(loc)));
+                                res.setDistance(String.valueOf(Math.round(location.distanceTo(loc))));
                                 res.setFreeseats(data.child("free_tables").getValue().toString());
                                 res.setImageLink(data.child("imageLink").getValue().toString());
                                 res.setName(data.child("name").getValue().toString());

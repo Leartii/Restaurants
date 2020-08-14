@@ -46,9 +46,9 @@ public class RestaurantsRecyclerAdapter extends RecyclerView.Adapter<Restaurants
 
             Picasso.with(context).load(restaurants.getImageLink()).placeholder(android.R.drawable.ic_btn_speak_now).into(holder.resImage);
 
-            holder.resname.setText(restaurants.getName());
-            holder.freeseats.setText(restaurants.getFreeseats());
-            holder.distance.setText(restaurants.getDistance());
+            holder.resname.setText("Name: "+restaurants.getName());
+            holder.freeseats.setText("Free tables: "+restaurants.getFreeseats());
+            holder.distance.setText("Distance: "+restaurants.getDistance()+"m");
     }
 
     @Override
