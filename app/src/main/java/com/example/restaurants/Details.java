@@ -25,6 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,7 +36,7 @@ public class Details extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference dbref;
     private String key;
-    private int Hour,Minute;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,7 @@ public class Details extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_details);
+        setupUI();
         try {
             Bundle extras = getIntent().getExtras();
             key = extras.getString("key");
@@ -52,15 +54,32 @@ public class Details extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        Calendar calendar = Calendar.getInstance();
+
+        final int Hour = calendar.get(Calendar.HOUR_OF_DAY);
+        final int Minute = calendar.get(Calendar.MINUTE);
+
         Eopen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 TimePickerDialog timePickerDialog = new TimePickerDialog(Details.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        Eopen.setText(hourOfDay+":"+minute);
+                       if(minute == 0){
+                        Eopen.setText(hourOfDay+":"+minute+"0");
+                       }
+                       else if(hourOfDay == 0){
+                           Eopen.setText("0"+hourOfDay+":"+minute);
+                       }
+                       else if(hourOfDay == 0 && minute == 0){
+                           Eopen.setText("0"+hourOfDay+":"+minute+"0");
+                       }
+                       else{
+                           Eopen.setText(hourOfDay+":"+minute);
+                       }
                     }
                 }, Hour, Minute, true);
+                timePickerDialog.show();
             }
         });
 
@@ -70,12 +89,24 @@ public class Details extends AppCompatActivity {
                 TimePickerDialog timePickerDialog = new TimePickerDialog(Details.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        if(minute == 0){
+                            Eclose.setText(hourOfDay+":"+minute+"0");
+                        }
+                        else if(hourOfDay == 0){
+                            Eclose.setText("0"+hourOfDay+":"+minute);
+                        }
+                        else if(hourOfDay == 0 && minute == 0){
+                            Eclose.setText("0"+hourOfDay+":"+minute+"0");
+                        }
+                        else{
                             Eclose.setText(hourOfDay+":"+minute);
+                        }
                     }
                 }, Hour, Minute, true);
+                timePickerDialog.show();
             }
         });
-        setupUI();
+
         mAuth = FirebaseAuth.getInstance();
         dbref = FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("Details");
 

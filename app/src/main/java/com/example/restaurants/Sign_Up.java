@@ -80,7 +80,7 @@ public class Sign_Up extends AppCompatActivity {
                 progressDialog.setMessage("Creating Account");
                 progressDialog.show();
 
-                if(!(username.isEmpty() && email.isEmpty() && password.isEmpty())){
+                if(!(username.isEmpty() || email.isEmpty() || password.isEmpty() || resultUri == null)){
 
                     firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(Sign_Up.this, new OnCompleteListener<AuthResult>() {
                         @Override
@@ -121,6 +121,10 @@ public class Sign_Up extends AppCompatActivity {
                     });
 
 
+                }
+                else if(resultUri == null && !username.isEmpty() && !email.isEmpty() && !password.isEmpty()){
+                    progressDialog.dismiss();
+                    Toast.makeText(getApplicationContext(), "A profile picture is required", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     progressDialog.dismiss();

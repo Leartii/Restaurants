@@ -42,8 +42,10 @@ public class Home extends AppCompatActivity {
         dbref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+               if(dataSnapshot.hasChild("free_tables")){
                 current = Integer.parseInt(dataSnapshot.child("free_tables").getValue().toString());
-                numTabs.setText(current);
+                numTabs.setText(String.valueOf(current));
+               }
             }
 
             @Override
