@@ -87,7 +87,7 @@ public class Sign_Up extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (!task.isSuccessful()){
                                 progressDialog.dismiss();
-                                Log.d("values " , email+", "+password+ ", "+username);
+                                Log.d("values up there " , email+", "+password+ ", "+username);
                                 Toast.makeText(getApplicationContext(), "Some error during sign up",Toast.LENGTH_LONG).show();
                             }
                             else{
